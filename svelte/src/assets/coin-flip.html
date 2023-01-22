@@ -1,0 +1,122 @@
+<script>
+
+
+  let coinResult = '';
+    let diceResult = '';
+    let stringResult = '';
+    let numberResult = '';
+  
+    function flipCoin() {
+     
+      coinResult = Math.random() < 0.5 ? "heads" : "tails";
+      document.getElementById("coin-flip-animation").style.display = "block";
+      setTimeout(function() {
+      document.getElementById("coin-flip-animation").style.display = "none";
+                            }, 1000);
+    }
+  
+    function throwDice() {
+      diceResult = Math.floor(Math.random() * 6) + 1;
+    }
+  
+    function generateString() {
+      let possible = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+      stringResult = '';
+      for (let i = 0; i < 10; i++) {
+        stringResult += possible.charAt(Math.floor(Math.random() * possible.length));
+      }
+    }
+  
+    function generateNumber() {
+      numberResult = Math.floor(Math.random() * 100000);
+    }
+    
+  </script>
+  
+  
+  <main>
+  <body>
+    
+    <h1>Random Generator</h1>
+    <div>
+         <button on:click={flipCoin}>Flip a coin</button>
+         
+
+         <div><img src="https://drive.google.com/file/d/1ABA_EFQUk0lNU80rbO2nE30AR6r1agkm/view?usp=share_link" style="display: none;" id="coin-flip-animation"></div>
+
+        
+         <p>{coinResult}</p>
+  
+    </div>
+  
+    <div>
+          <button on:click={throwDice}>Throw a dice</button>
+          <p>{ diceResult}</p>
+    </div>
+  
+    <div>
+           <button on:click={generateString}>Generate a random string</button>
+           <p>{stringResult}</p>
+  
+    </div>
+  
+    <div>
+          <button on:click={generateNumber}>Generate a random number</button>
+          <p>{numberResult}</p>
+    </div>
+  
+  </body>
+  </main>
+  
+  
+  <style>
+
+    /* lets practice */
+
+    body {
+  background-color: #f2f2f2;
+  text-align: center;
+}
+
+h1 {
+ 
+   text-shadow: 0px 0px 10px #000000;
+  font-family: 'Algerian', sans-serif;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+p {
+  font-family: 'Courier New', monospace;
+  text-align: center;
+  margin-top: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #4CAF50; /* Green */
+  color: white;
+  border: none;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+#coin-flip-animation {
+  animation: flip 1s;
+}
+
+@keyframes flip {
+  from {transform: rotateY(0deg);}
+  to {transform: rotateY(360deg);}
+}
+
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} 
+  </style>
+  
